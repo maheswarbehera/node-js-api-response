@@ -1,0 +1,27 @@
+{
+  "name": "node-js-api-response",
+  "version": "1.0.0",
+  "description": "A custom API response and error handler for Node.js / Express.js",
+  "license": "ISC",
+  "author": "Maheswar Behera",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "express",
+    "error-handling",
+    "api-response",
+    "middleware"
+
+  ],
+  "devDependencies": {
+    "winston": "^3.17.0"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/maheswarbehera/node-js-api-response.git"
+  }
+}
