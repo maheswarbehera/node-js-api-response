@@ -1,6 +1,6 @@
 {
   "name": "node-js-api-response",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "A custom API response and error handler for Node.js / Express.js",
   "license": "ISC",
   "author": "Maheswar Behera",
@@ -15,7 +15,6 @@
     "error-handling",
     "api-response",
     "middleware"
-
   ],
   "devDependencies": {
     "winston": "^3.17.0"

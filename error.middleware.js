@@ -1,4 +1,4 @@
-import { ApiError, logger }  from './index.js'; 
+import { ApiError }  from './index.js'; 
 
 /**
  * A custom error-handling middleware for Express.js applications.
@@ -22,9 +22,9 @@ const errorHandler = (err, req, res, next) => {
 
   // In development mode, log the stack trace for debugging
   if (process.env.NODE_ENV === 'development') {
-    logger.error(stack);
+    console.log(stack);
   }else{
-    logger.error(`[${Date.now}] [${statusCode}] ${req.method} ${req.originalUrl} - ${message}`); 
+    console.log(`[${Date.now()}] [${statusCode}] ${req.method} ${req.originalUrl} - ${message}`); 
   }
 
   // Check if the error is an instance of ApiError
