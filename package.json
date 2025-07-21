@@ -1,0 +1,35 @@
+{
+  "name": "@npm_maheswar/node-js-api-response",
+  "version": "1.0.1",
+  "description": "Unified API response and error handling for Express.js in TypeScript. This package provides a middleware for consistent API responses and error handling in Express applications, making it easier to manage API responses and errors in a standardized way.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["express", "typescript", "api", "error", "response", "middleware",
+    "error-handling",
+    "api-response"],
+  "author": "Maheswar Behera",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/maheswarbehera/node-js-api-response"
+  }
+}
