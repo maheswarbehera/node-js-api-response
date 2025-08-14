@@ -1,6 +1,6 @@
 import { Response } from 'express';
 
-interface SuccessResponse<T = any> {
+interface SuccessPayload<T = any> {
     statusCode: number;
     status: boolean;
     message: string;
@@ -12,7 +12,7 @@ interface SuccessResponse<T = any> {
  *
  * @template T - The type of the response data.
  */
-export class ApiResponse<T = any> {
+export default class HttpBaseResponse<T = any> {
     /**
      * The HTTP status code of the response.
      */
@@ -34,13 +34,13 @@ export class ApiResponse<T = any> {
     public status: boolean;
 
     /**
-     * Creates an instance of ApiResponse.
+     * Creates an instance of HttpBaseResponse.
      *
      * @param statusCode - The HTTP status code.
-     * @param data - The data payload.
      * @param message - The response message. Defaults to 'Success'.
+     * @param data - The data payload.
      */
-    constructor(statusCode: number, data: T, message: string = 'Success') {
+    constructor(statusCode: number, message: string = 'Success', data: T,) {
         this.statusCode = statusCode;
         this.message = message;
         this.data = data;
@@ -48,20 +48,29 @@ export class ApiResponse<T = any> {
     }
 
     /**
-     * Converts the ApiResponse instance to a JSON object conforming to SuccessResponse<T>.
+     * Converts the HttpBaseResponse instance to a JSON object conforming to SuccessPayload<T>.
      *
      * @returns The JSON representation of the response.
      */
-    toJSON(): SuccessResponse<T> {
-        const response: SuccessResponse<T> = {
+    toJSON(): SuccessPayload<T> {
+        const response: SuccessPayload<T> = {
             statusCode: this.statusCode,
-            status: this.status,
             message: this.message,
+            status: this.status,
         };
         if (this.data !== undefined && this.data !== null) {
             response.data = this.data;
         }
         return response;
+    }
+}
+
+/**
+ * Represents a successful API response.
+ */
+export class HttpSuccessResponse<T = any> extends HttpBaseResponse<T> {
+    constructor(statusCode: number = 200, message: string = 'Success', data?: T) {
+        super(statusCode, message, data!);
     }
 }
 
@@ -77,9 +86,9 @@ export class ApiResponse<T = any> {
 export const SuccessResponse = <T>(
     res: Response,
     statusCode: number,
-    data: T,
-    message: string = 'Success'
+    message: string = 'Success',
+    data?: T
 ): void => {
-    const apiResponse = new ApiResponse<T>(statusCode, data, message);
+    const apiResponse = new HttpSuccessResponse<T>(statusCode, message, data);
     res.status(statusCode).json(apiResponse.toJSON());
 };

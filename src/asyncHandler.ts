@@ -12,9 +12,10 @@ import { Request, Response, NextFunction } from 'express';
  *   res.json(data);
  * }));
  */
-
-export const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<any>): Function => {
+const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<any>): Function => {
     return (req: Request, res: Response, next: NextFunction) => {
         Promise.resolve(fn(req, res, next)).catch((err) => next(err));
     }
 }
+
+export default asyncHandler;
