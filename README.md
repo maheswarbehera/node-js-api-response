@@ -1,4 +1,4 @@
-# @npm_maheswar/node-js-api-response
+# node-js-api-response
 
 This package provides custom API response and error-handling middleware for Express.js applications. It helps standardize error handling, API responses, and logging based on the environment.
 
@@ -17,11 +17,11 @@ This package provides custom API response and error-handling middleware for Expr
 To install the package:
 
 ```bash
-npm install @npm_maheswar/node-js-api-response
+npm install node-js-api-response
 
 OR
 
-yarn add @npm_maheswar/node-js-api-response
+yarn add node-js-api-response
 ```
 
 ---
@@ -56,7 +56,7 @@ export const asyncHandler = (fn: (req: Request, res: Response, next: NextFunctio
 Wrap your async route handlers so you can stop writing repetitive try/catch blocks.
 ```javascript
 import express, { Application, NextFunction, Request, Response } from "express";
-import { asyncHandler } from '@npm_maheswar/node-js-api-response'; // Install via npm package
+import { asyncHandler } from 'node-js-api-response'; // Install via npm package
 
 const app: Application = express(); 
 
@@ -104,7 +104,7 @@ SuccessResponse(...): Utility that handles res.status().json(...) internally.
 ```
 
 ```javascript
-import { HttpSuccessResponse, SuccessResponse } from '@npm_maheswar/node-js-api-response'; 
+import { HttpSuccessResponse, SuccessResponse } from 'node-js-api-response'; 
 
 app.get('/api/v1/success', (req: Request, res: Response, next: NextFunction) => {
   // Data to return in the response
@@ -156,7 +156,7 @@ You can use the `globalErrorHandler` middleware in your Express.js application t
 #### Example:
 
 ```javascript
-import { globalErrorHandler, } from '@npm_maheswar/node-js-api-response'; 
+import { globalErrorHandler, } from 'node-js-api-response'; 
 
 // Use the error handler middleware at last
 app.use(globalErrorHandler); // Place this after all routes
@@ -194,7 +194,7 @@ You can use `HttpErrorResponse` and `ErrorResponse` in your Express.js applicati
 - Use one or the other, not both
 
 ```javascript
-import ErrorDefinitions, { HttpErrorResponse, ErrorResponse } from '@npm_maheswar/node-js-api-response'; 
+import ErrorDefinitions, { HttpErrorResponse, ErrorResponse } from 'node-js-api-response'; 
 
 // A sample route that throws an error
 app.get('/api/v1/error', (req: Request, res: Response, next: NextFunction) => {
